@@ -1,0 +1,54 @@
+Inregistrare  
+
+<form name="form_signup">
+	<input name="name" ng-model="name" required>
+	<span ng-show="form_signup.name.$touched && form_signup.name.$invalid">The name is required.</span>
+	
+	<br>
+	<input name="email" ng-model="email" type="email" required>
+	<span ng-show="form_signup.email.$touched && form_signup.email.$invalid">The email is required.</span>
+	<br>
+	<br>
+	<br>
+	<span  ng-show="!showimage">
+		<input data-my-Directive type="file" name="file">
+		<p>
+		post request with this data:
+		</p>
+	</span>
+	<span ng-show="showimage">
+		<input type="hidden" name="imagepath" ng-model="imagepath" ng-value="imagepath" required>
+		<img src="{{imagepath}}" style="max-width:200px; max-height:200px;"/>
+		<br>
+		<button ng-click="uploadagain()">
+			Alta poza
+		</button>
+	</span>
+	
+	<br>
+	<input name="pass" ng-model="pass" type="password" required>
+	<span ng-show="form_signup.pass.$touched && form_signup.pass.$invalid">A password is required.</span>
+	
+	<br>
+	<input name="re_pass" ng-model="re_pass" type="password" required>
+	<span ng-show="form_signup.re_pass.$touched && !passMatch()">Passwords do not match</span>
+
+	
+	<br>
+	<br>
+	<span ng-show="form_signup.re_pass.$touched && isValidForm()">
+		<button ng-click="submit()">
+				Submit
+		</button>
+	</span>
+	
+</form>
+
+<style>
+input.ng-invalid {
+    background-color: pink;
+}
+input.ng-valid {
+    background-color: lightgreen;
+}
+</style>
